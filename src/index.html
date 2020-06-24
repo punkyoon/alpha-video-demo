@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=0" />
+    <meta name="theme-color" content="#FFFFFF" />
+
+    <title>Transparent Video Demo On Web</title>
+
+    <style>
+      .video-wrapper {
+        background-color: #ffffff;
+        width: 100%;
+        max-width: 600px;
+        max-height: 360px;
+      }
+
+      video {
+        width: 100%;
+        max-height: 360px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- WebM (VP9) -->
+    <div>
+      <h2>WebM (VP9)</h2>
+      <div id="vp9-demo-wrapper" class="video-wrapper">
+        <video autoplay controls muted loop playsinline>
+          <source src="videos/vp9-demo.webm" type="video/webm" />
+        </video>
+      </div>
+
+      <button type="button" onclick="changeBackground('vp9-demo-wrapper');">Change Background</button>
+    </div>
+
+    <!-- MOV (H.265/HEVC) -->
+    <div>
+      <h2>MP4 (H.264/HEVC)</h2>
+      <div id="mp4-demo-wrapper" class="video-wrapper">
+        <video autoplay controls muted loop playsinline>
+          <source src="videos/hevc-demo.mov" type="video/quicktime" />
+        </video>
+      </div>
+      <button type="button" onclick="changeBackground('mp4-demo-wrapper');">Change Background</button>
+    </div>
+
+    <!-- Fallback Demo -->
+    <div>
+      <h2>Fallback Demo</h2>
+      <div id="fallback-demo-wrapper" class="video-wrapper">
+        <video autoplay controls muted loop playsinline>
+          <source src="videos/hevc-demo.mov" type="video/quicktime" />
+          <source src="videos/vp9-demo.webm" type="video/webm" />
+        </video>
+      </div>
+
+      <p>Chrome: dancing video / Safari: puppet video</p>
+
+      <button type="button" onclick="changeBackground('fallback-demo-wrapper')">Change Background</button>
+    </div>
+
+    <script>
+      function changeBackground(elementId) {
+        const elem = document.getElementById(elementId);
+        const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+
+        elem.style.backgroundColor = `#${randomColor}`;
+      }
+    </script>
+  </body>
+</html>
